@@ -167,3 +167,11 @@ bit_t os_queryTimeCriticalJobs(ostime_t time) {
     else
         return 0;
 }
+
+ostime_t os_getNextJobDeadline() {
+  if(OS.scheduledjobs) {
+    return OS.scheduledjobs->deadline;
+  } else {
+    return -1;
+  }
+}

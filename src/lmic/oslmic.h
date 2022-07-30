@@ -217,6 +217,8 @@ u1_t os_getBattLevel (void);
 bit_t os_queryTimeCriticalJobs(ostime_t time);
 #endif
 
+ostime_t os_getNextJobDeadline(void);
+
 #ifndef os_rlsbf4
 //! Read 32-bit quantity from given pointer in little endian byte order.
 u4_t os_rlsbf4 (xref2cu1_t buf);
