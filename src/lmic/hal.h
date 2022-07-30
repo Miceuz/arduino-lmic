@@ -103,6 +103,9 @@ uint8_t hal_getIrqLevel (void);
  * put system and CPU in low-power mode, sleep until interrupt.
  */
 void hal_sleep (void);
+#include <stdbool.h>
+bool hal_can_sleep();
+void hal_sleep_reset();
 
 /*
  * return 32-bit system time in ticks.

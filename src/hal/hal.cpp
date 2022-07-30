@@ -337,13 +337,13 @@ u1_t hal_checkTimer (u4_t time) {
 static uint8_t irqlevel = 0;
 
 void hal_disableIRQs () {
-    noInterrupts();
+    // noInterrupts();
     irqlevel++;
 }
 
 void hal_enableIRQs () {
     if(--irqlevel == 0) {
-        interrupts();
+    //     interrupts();
 
 #if !defined(LMIC_USE_INTERRUPTS)
         // Instead of using proper interrupts (which are a bit tricky
@@ -365,9 +365,10 @@ uint8_t hal_getIrqLevel(void) {
     return irqlevel;
 }
 
-void hal_sleep () {
-    // Not implemented
-}
+bool can_sleep = false;
+void hal_sleep() { can_sleep = true; }
+bool hal_can_sleep() { return can_sleep; }
+void hal_sleep_reset() { can_sleep = false; }
 
 // -----------------------------------------------------------------------------
 
